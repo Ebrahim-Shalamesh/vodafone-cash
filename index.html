@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/logo-abohanen.jpg" />
     <title>فودافون كاش مكتبة ابو حنين</title>
     <style>
         body {
@@ -64,6 +65,14 @@
         .buttonn:hover {
             background-color: #c70000;
         }
+        .button-green {
+    background-color: #388E3C;
+}
+
+.button-green:hover {
+    background-color: #2E7D32;
+}
+
         .words {
             font-size: 30px;
             color: #333;
@@ -112,15 +121,18 @@
             </div>
         </div>
         <div class="add-button">
-            <button class="button buttonn" onclick="addNewNumber()">إضافة رقم جديد</button>
+            <button class="button button-green" onclick="addNewNumber()">إضافة رقم جديد</button>
+        </div>
+        <div class="add-button">
+            <button class="button buttonn" onclick="removeNumber()">حذف رقم </button>
         </div>
     </div>
 
     <script>
         function selectNumber(number) {
-            console.log("Selected number:", number);
             // Navigate to the transaction page
             location.href = `transaction.html?number=${number}`;
+            localStorage.setItem('active-number', number);
         }
 
         function addNewNumber() {
@@ -137,8 +149,29 @@
             }
         }
 
+        function removeNumber() {
+            const number = prompt("أدخل الرقم المراد حذفه:");
+            if (number) {
+                const buttons = document.querySelectorAll('.button');
+                buttons.forEach(button => {
+                    if (button.innerHTML === number) {
+                        button.remove();
+                    }
+                });
+            }
+        }
+
         window.onload = function() {
-            // Load any additional functionality if needed
+            // Load active number from localStorage
+            const activeNumber = localStorage.getItem('active-number');
+            if (activeNumber) {
+                const buttons = document.querySelectorAll('.button');
+                buttons.forEach(button => {
+                    if (button.innerHTML === activeNumber) {
+                        button.style.backgroundColor = 'tomato';
+                    }
+                });
+            }
         };
     </script>
 </body>
