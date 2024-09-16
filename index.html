@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فودافون كاش مكتبة ابو حنين</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            direction: rtl;
+        }
+        .main-container {
+            width: 60%;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #2196F3;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #1976D2;
+        }
+        .buttonn {
+            background-color: #d80909;
+            margin-right: 5px;
+        }
+        .buttonn:hover {
+            background-color: #c70000;
+        }
+        .words {
+            font-size: 30px;
+            color: #333;
+        }
+        @media (max-width: 556px) { 
+        .buttonn{
+        margin-right: -3px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h2 class="words">مكتبة ابو حنين ادارة فودافون كاش</h2>
+            <img src="logo-abohanen.jpg" alt="Logo" class="logo">
+        </div>
+        <h1>اختر الرقم المطلوب</h1>
+        <div class="button-container" id="buttonContainer">
+            <div>
+                <button class="button" onclick="selectNumber('01092468302')">01092468302</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01015681506')">01015681506</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01026752803')">01026752803</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01006883987')">01006883987</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01091010763')">01091010763</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01000662305')">01000662305</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01011948927')">01011948927</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01027949045')">01027949045</button>
+            </div>
+            <div>
+                <button class="button" onclick="selectNumber('01062596700')">01062596700</button>
+            </div>
+        </div>
+        <div class="add-button">
+            <button class="button buttonn" onclick="addNewNumber()">إضافة رقم جديد</button>
+        </div>
+    </div>
+
+    <script>
+        function selectNumber(number) {
+            console.log("Selected number:", number);
+            // Navigate to the transaction page
+            location.href = `transaction.html?number=${number}`;
+        }
+
+        function addNewNumber() {
+            const newNumber = prompt("أدخل الرقم الجديد:");
+            if (newNumber) {
+                const div = document.createElement("div");
+                const button = document.createElement("button");
+                button.className = "button";
+                button.innerText = newNumber;
+                button.onclick = () => selectNumber(newNumber);
+
+                div.appendChild(button);
+                document.getElementById('buttonContainer').appendChild(div);
+            }
+        }
+
+        window.onload = function() {
+            // Load any additional functionality if needed
+        };
+    </script>
+</body>
+</html>
